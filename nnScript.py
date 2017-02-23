@@ -26,7 +26,7 @@ def sigmoid(z):
     # return the sigmoid of input z"""
     #internal function that allows us to create a vectorized function
     def sig(x):
-        return 1/(1+np.exp(x))
+        return 1/(1+np.exp(-x))
 
     f = np.vectorize(sig)
 
