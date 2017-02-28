@@ -26,7 +26,7 @@ def sigmoid(z):
     # return the sigmoid of input z"""
     #internal function that allows us to create a vectorized function
     def sig(x):
-        return 1/(1+np.exp(x))
+        return 1/(1+np.exp(-x))
 
     f = np.vectorize(sig)
 
@@ -214,11 +214,17 @@ def nnPredict(w1, w2, data):
        
     % Output: 
     % label: a column vector of predicted labels"""
-
-    labels = np.array([])
-    # Your code here
-
+    def nnPredict(w1, w2, data):
+    d = data.T #transpose the inputs
+    s = np.dot(w1,d) #calculate dot product of input weights * transpose(input values)
+    sums = s.sum(axis=1) #sum the rows
+    sums = np.append(sums, np.array([[1]]), axis=0) #append bias term
+    labels = np.dot(w2,sums) #get dot product of hidden node weights * hidden node outputs
+    
     return labels
+    #labels = np.array([])
+    # Your code here
+    #return labels
 
 
 """**************Neural Network Script Starts here********************************"""
